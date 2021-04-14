@@ -1,23 +1,19 @@
 \documentclass{article}
-
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-
-\usepackage{microtype,array,hyperref,pgffor,amssymb}
+% tikz only for index
+\usepackage{microtype,array,hyperref,pgffor,amssymb,tikz}
 \usepackage[main=ngerman,english]{babel}
-
 \usepackage[a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
-
 \usepackage[legacy]{lilly-color}
 
 \hypersetup{%
-    pdfborder=0 0 0,%
-    colorlinks=true,%
+    pdfborder=0 0 0,colorlinks=true,%
     allcolors=Purple%
 }
 
 \usepackage{imakeidx}
-\makeindex[title=Befehlsübersicht,columns=2,columnsep=0.75cm]
+\makeindex[title=Befehlsübersicht,columns=2,columnsep=.75cm]
 \newcommand{\idxname}{Befehlsübersicht}
 
 \def\cmd#1{\texttt{\textcolor{Crimson}{\textbackslash#1}}}
@@ -29,10 +25,10 @@
 
 \def\secref#1{\hyperref[#1]{\ref*{#1} \nameref*{#1}}}
 
-\newenvironment{command}[3][v1.0]{\leavevmode\\[-\baselineskip]\hspace*{-1.75em}\index{#2@\cmdref{#2}}\cmdlink{#2}$\,$#3\hfill{}\texttt{#1}\nopagebreak\smallskip\\*}{\bigskip\par{}}
+\newenvironment{command}[3][v1.0]{\leavevmode\\[-\baselineskip]\hspace*{-1.75em}\index{#2?\cmdref{#2}}\cmdlink{#2}$\,$#3\hfill{}\texttt{#1}\nopagebreak\smallskip\\*}{\bigskip\par{}}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.35\baselineskip plus 0.15\baselineskip minus 0.05\baselineskip}
+\setlength{\parskip}{.35\baselineskip plus .15\baselineskip minus .05\baselineskip}
 
 
 \title{\textsf{\textcolor{AppleGreen}{\{}\textcolor{Crimson}{lilly-color}\textcolor{AppleGreen}{\}}}}
@@ -70,22 +66,22 @@
 \end{command}
 
 \section{Paketoptionen}
-\label{sec:packetoptions}Das Paket kann mit den Optionen \texttt{legacy}/\texttt{nolegacy} geladen werden (letztere Option ist der Standard). Sie kontrolliert, ob das Paket die in \secref{sec:overview} aufgeführten, kleingeschriebenen Farben, ebenfalls geladen werden sollen.
+\label{sec:packetoptions}Das Paket kann mit den Optionen \texttt{legacy}/\allowbreak\texttt{nolegacy} geladen werden (letztere Option ist der Standard). Sie kontrolliert, ob das Paket die in \secref{sec:overview} aufgeführten, kleingeschriebenen Farben, ebenfalls geladen werden sollen.
 
 \clearpage\section{Farbübersicht}
 \label{sec:overview}%
 \begin{center}
     Alle kleingeschriebenen Farben sind nur über die \texttt{legacy}-Option verfügbar.
 \end{center}
-\hbox{}\vfill
+\null\vfill
 \begin{multicols}{2}
-    \begin{itemize}
-        \foreach \col in \ColorList {%
-            \item[\textcolor{\col}{$\blacktriangleright$}]\emph{\col} \hfill \textcolor{\col}{\colorbox{black}{$\blacktriangleright$}}\textcolor{\col}{$\blacktriangleleft$}%
-        }%    
-    \end{itemize}    
+\begin{itemize}
+    \foreach \col in \ColorList {%
+        \item[\textcolor{\col}{$\blacktriangleright$}]\emph{\col} \hfill\textcolor{\col}{\fboxsep=2.5pt\colorbox{black}{$\blacksquare$}}\thinspace\textcolor{\col}{$\blacksquare$}%
+    }%
+\end{itemize}
 \end{multicols}
-\vfill{}\hbox{}
+\vfill{}\null
 \clearpage\appendix
 \phantomsection\addcontentsline{toc}{section}{\idxname}
 \printindex

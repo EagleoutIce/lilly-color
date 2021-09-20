@@ -20,7 +20,7 @@
 \def\arg#1{\textit{\textcolor{Crimson!76!white}{#1}}}
 \def\manArg#1{\texttt{\{\,\arg{#1}\,\}}}
 
-\def\secref#1{\hyperref[#1]{\ref*{#1}.~\nameref*{#1}}}
+\def\secref#1{\nameref{#1}}
 
 \newenvironment{command}[3][v1.0]{\leavevmode\\[-\baselineskip]\hspace*{-1.75em}\index{#2?\cmdref{#2}}\cmdlink{#2}$\,$#3\hfill{}\texttt{#1}\nopagebreak\smallskip\\*}{\bigskip\par{}}
 

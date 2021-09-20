@@ -7,14 +7,11 @@
 \usepackage[a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 \usepackage[legacy]{lilly-color}
 
-\hypersetup{%
-    pdfborder=0 0 0,colorlinks=true,%
-    allcolors=Purple%
-}
+\hypersetup{pdfborder=0 0 0,colorlinks=true,allcolors=Purple}
 
 \usepackage{imakeidx}
 \makeindex[title=Befehlsübersicht,columns=2,columnsep=.75cm]
-\newcommand{\idxname}{Befehlsübersicht}
+\def\idxname{Befehlsübersicht}
 
 \def\cmd#1{\texttt{\textcolor{Crimson}{\textbackslash#1}}}
 \def\cmdlink#1{\phantomsection\label{cmd:#1}\cmd{#1}}
@@ -23,11 +20,11 @@
 \def\arg#1{\textit{\textcolor{Crimson!76!white}{#1}}}
 \def\manArg#1{\texttt{\{\,\arg{#1}\,\}}}
 
-\def\secref#1{\hyperref[#1]{\ref*{#1} \nameref*{#1}}}
+\def\secref#1{\hyperref[#1]{\ref*{#1}.~\nameref*{#1}}}
 
 \newenvironment{command}[3][v1.0]{\leavevmode\\[-\baselineskip]\hspace*{-1.75em}\index{#2?\cmdref{#2}}\cmdlink{#2}$\,$#3\hfill{}\texttt{#1}\nopagebreak\smallskip\\*}{\bigskip\par{}}
 
-\setlength{\parindent}{0pt}
+\parindent0pt
 \setlength{\parskip}{.35\baselineskip plus .15\baselineskip minus .05\baselineskip}
 
 
@@ -42,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-    Dieses Paket liefert die Hauptfarben von \href{https://github.com/EagleoutIce/LILLY}{Lilly}, aber in einer unabhängigen Variante. Weiter liefert es Makros (wie \cmdref{RegisterColors}), die es erlauben Farben leicht zu definieren und in einer solchen Weise, dass Editoren die definierte Farbe ohne umwege hervorheben können. Eine Übersicht findet sich in \secref{sec:overview}.
+    Dieses Paket liefert die Hauptfarben von \href{https://github.com/EagleoutIce/LILLY}{Lilly}, aber in einer unabhängigen Variante. Weiter liefert es Makros (wie \cmdref{RegisterColors}), die es erlauben Farben leicht zu definieren und in einer solchen Weise, dass Editoren die definierte Farbe ohne Umwege hervorheben können. Eine Übersicht findet sich in \secref{sec:overview}.
 \end{abstract}
 
 \tableofcontents
@@ -81,7 +78,7 @@
     }%
 \end{itemize}
 \end{multicols}
-\vfill{}\null
+\vfill\null
 \clearpage\appendix
 \phantomsection\addcontentsline{toc}{section}{\idxname}
 \printindex
